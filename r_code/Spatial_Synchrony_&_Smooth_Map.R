@@ -1,4 +1,6 @@
+##################################################################################
 # Spatial synchrony analysis and Kennel density plot MTBS fires in the Western United States
+##################################################################################
 
 # Load libraries
 library(ncf)          # Functions for spatial synchrony analysis
