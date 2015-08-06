@@ -5,3 +5,8 @@
    from 1984 to 2010 in western United States"
    
 2. The Manuscript is under review in PLOS ONE now.
+
+3. The data folder contains the data used in the manuscript. 
+4. The r_code folder contain the main R codes for analysis and plot.
+
+
