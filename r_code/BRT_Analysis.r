@@ -21,7 +21,7 @@ model.perf = c()
 for (i in 1:length(tc)){
  for (j in 1:length(lr)){
   for (k in 1:length(nt)){
-  gbm1=gbm.step(data = Fire.1, gbm.x = 1:(ncol(Fire.1)-2),
+ gbm1=gbm.step(data = Fire.1, gbm.x = 1:(ncol(Fire.1)-2),
 						gbm.y = ncol(Fire.1)-1, 
 						family = "bernoulli",
 						tree.complexity = tc[i], 
