@@ -163,10 +163,14 @@ firesize.den = markmean(firesize.ppp, sigma=100000)
 firesize.den2 = firesize.den
 firesize.den2$v = 10^(firesize.den$v)
 
-# Smoothed fire severity plot
-firesev.den = markmean(firesev.ppp, weights = firep.sp$AreaHa, sigma=50000) #weighted by fire size, 50000 seems to be an optimal radius
-firesev.den2 = firesev.den
-firesev.den2$v = 10^(firesev.den$v)
+# Smoothed high severity fire size plot
+firesevh.den = markmean(firesevh.ppp, sigma=50000) #use this one
+firesevh.den2 = firesevh.den
+firesevh.den2$v = 10^(firesevh.den$v)
+
+#Smoothed fire severity plot2 #use this one
+firesev2 = firesevh.den2
+firesev2$v = 100*firesevh.den$v/firesize.den2$v #use this one
 
 #plot results
 png(".data\\SmoothMap.png",height = 3000, width = 2500, res = 300, units = "px")
@@ -174,14 +178,17 @@ par(mfrow=c(2,2),mar=c(0,0,1,1))
 
 plot(firep.den2,main = "a): Fire Occurrence (# Fires/Million ha*year)", terrain.colors(10),
      ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1.5,ribargs=list(cex.axis=1.5))
-	 
-firesize.den3= firesize.den2
-firesize.den3$v= log10(firesize.den2$v)
-plot(firesize.den2,main = "b): Fire Size (ha)", terrain.colors(10),
-     ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1.5,ribargs=list(cex.axis=1.5))
 
-plot(firesev.den2, main = "c): Percent High Severity (%)", terrain.colors(10),
-     ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1.5,ribargs=list(cex.axis=1.5))
+plot(firesize.den3, main = "b): Fire Size (ha, in log10 scale)", terrain.colors(100),
+     ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1,ribargs=list(cex.axis=1.5))
+
+plot(firesevh.den, main = "c): High Severity Fire Size (ha, in log10 scale)", terrain.colors(100),
+     ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1,ribargs=list(cex.axis=1.5))
+
+
+plot(firesev2, main = "d): Percent of High Severity Burning(%)", terrain.colors(100),
+     ribside="right",ribsep=0.03,ribwid=0.05,ribn=2048,ribscale=1,ribargs=list(cex.axis=1.5))
+
 
 dev.off()
 
