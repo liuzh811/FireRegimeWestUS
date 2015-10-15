@@ -1,5 +1,9 @@
 # FireRegimeWestUS
-10/15/2015 by Zhihua Liu; liuzh811@gmail.com
+    10/15/2015 
+    
+    Zhihua Liu 
+    
+    liuzh811@gmail.com
 
 1. This repository was created to store data and codes used for Liu and Wimberly (2015) paper.
 
